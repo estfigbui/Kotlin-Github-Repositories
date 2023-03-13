@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Fragment with details for one selected repository -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android_bankuish_challenge.ui.view.RepositoryDetailsFragment">
+
+    <data>
+
+        <variable
+            name="repository"
+            type="com.example.android_bankuish_challenge.data.model.GithubRepository" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_8dp"
+        app:cardCornerRadius="@dimen/dimen_10dp"
+        app:cardElevation="@dimen/dimen_4dp"
+        app:strokeColor="@android:color/background_light"
+        app:strokeWidth="@dimen/dimen_1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/avatarDetail"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                app:imageUrl="@{repository.owner.avatar_url}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                tools:srcCompat="@drawable/icon_github2" />
+
+            <TextView
+                android:id="@+id/nameDetail"
+                style="@style/repositoryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:text="@{repository.name}"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/avatarDetail"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/title_placeholder" />
+
+            <TextView
+                android:id="@+id/ownerDetail"
+                style="@style/ownerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:text="@{repository.owner.login}"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintStart_toEndOf="@+id/avatarDetail"
+                app:layout_constraintTop_toBottomOf="@+id/nameDetail"
+                tools:text="Owner" />
+
+            <ImageView
+                android:id="@+id/repositoryImageDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:paddingBottom="@dimen/dimen_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avatarDetail"
+                app:srcCompat="@drawable/github_header"
+                tools:srcCompat="@drawable/github_header" />
+
+            <TextView
+                android:id="@+id/descriptionLabel"
+                style="@style/repositoryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_8dp"
+                android:text="@string/description_label"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/repositoryImageDetail"
+                tools:text="@string/description_label" />
+
+            <TextView
+                android:id="@+id/repositoryDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dimen_8dp"
+                android:text="@{repository.description}"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionLabel"
+                tools:text="@string/repository_details" />
+
+            <ImageView
+                android:id="@+id/detailForkImg"
+                android:layout_width="@dimen/dimen_16dp"
+                android:layout_height="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:layout_marginRight="@dimen/dimen_2dp"
+                app:layout_constraintEnd_toStartOf="@+id/detailForkTxt"
+                app:layout_constraintTop_toBottomOf="@+id/repositoryDetail"
+                app:srcCompat="@drawable/fork" />
+
+            <TextView
+                android:id="@+id/detailForkTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:layout_marginRight="@dimen/dimen_5dp"
+                android:text="@{repository.forks}"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintEnd_toStartOf="@+id/detailStarImg"
+                app:layout_constraintTop_toBottomOf="@+id/repositoryDetail"
+                tools:text="@tools:sample/lorem" />
+
+            <ImageView
+                android:id="@+id/detailStarImg"
+                android:layout_width="@dimen/dimen_15dp"
+                android:layout_height="@dimen/dimen_15dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:layout_marginRight="@dimen/dimen_2dp"
+                app:layout_constraintEnd_toStartOf="@+id/detailStarTxt"
+                app:layout_constraintTop_toBottomOf="@+id/repositoryDetail"
+                app:srcCompat="@drawable/star" />
+
+            <TextView
+                android:id="@+id/detailStarTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:text="@{repository.stargazers_count}"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/repositoryDetail"
+                tools:text="@tools:sample/lorem" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                app:dividerInsetEnd="@dimen/dimen_16dp"
+                app:dividerInsetStart="@dimen/dimen_16dp"
+                app:layout_constraintBottom_toTopOf="@+id/go_repository"
+                app:layout_constraintTop_toBottomOf="@+id/detailStarTxt" />
+
+            <Button
+                android:id="@+id/go_repository"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:minWidth="@dimen/dimen_250dp"
+                android:text="@string/go_repository"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
