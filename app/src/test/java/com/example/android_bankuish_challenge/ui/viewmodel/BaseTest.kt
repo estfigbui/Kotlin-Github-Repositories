@@ -1,12 +1,9 @@
-package com.example.android_bankuish_challenge
+package com.example.android_bankuish_challenge.ui.viewmodel
 
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.buffer
 import okio.source
-import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * [MockWebServer] will allow us to simulate a web server, which is going to intercept our request and respond with local data.
