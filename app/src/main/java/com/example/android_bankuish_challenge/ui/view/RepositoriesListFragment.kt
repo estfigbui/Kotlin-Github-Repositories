@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.android_bankuish_challenge.R
 import com.example.android_bankuish_challenge.ui.adapter.RepositoriesAdapter
 import com.example.android_bankuish_challenge.databinding.FragmentRepositoriesListBinding
+import com.example.android_bankuish_challenge.ui.adapter.LoadMoreAdapter
 import com.example.android_bankuish_challenge.utils.initRecycler
 import com.example.android_bankuish_challenge.viewmodel.GithubViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,10 +63,10 @@ class RepositoriesListFragment : Fragment() {
                 }
             }
 
-            // LoadStateFlow emits a snapshot whenever the loading state of the current PagingData changes.
+            // LoadStateFlow emits a snapshot whenever the loading state of the current PagingData changes
             lifecycleScope.launchWhenCreated {
                 repositoriesAdapter.loadStateFlow.collect {
-                    val state = it.refresh
+                    it.refresh
                 }
             }
 
@@ -73,12 +74,12 @@ class RepositoriesListFragment : Fragment() {
                 // Initialize RecyclerView
                 initRecycler(LinearLayoutManager(this.context), repositoriesAdapter)
 
-                // mirar como hacer esto!!!
-                /**adapter = repositoriesAdapter.withLoadStateFooter(
-                /*LoadMoreAdapter {
-                repositoriesAdapter.retry()
-                }*/
-                )*/
+                // Presents the LoadMoreAdapter as a footer alongside the PagingDataAdapter
+                adapter = repositoriesAdapter.withLoadStateFooter(
+                    LoadMoreAdapter {
+                        repositoriesAdapter.retry()
+                    }
+                )
             }
 
             // Handles the click on a specific item

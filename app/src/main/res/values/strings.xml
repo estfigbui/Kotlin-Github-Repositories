@@ -10,4 +10,6 @@
     <string name="repositories_list">Github Kotlin Repositories List</string>
     <string name="single_repository_details">Repository Details</string>
     <string name="go_repository">GO TO REPOSITORY!</string>
+    <string name="try_again">Oppps! Please try again!</string>
+    <string name="retry">Retry</string>
 </resources>

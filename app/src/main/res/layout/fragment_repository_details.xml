@@ -7,7 +7,6 @@
     tools:context="com.example.android_bankuish_challenge.ui.view.RepositoryDetailsFragment">
 
     <data>
-
         <variable
             name="repository"
             type="com.example.android_bankuish_challenge.data.model.GithubRepository" />
